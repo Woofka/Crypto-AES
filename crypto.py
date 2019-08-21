@@ -1,9 +1,3 @@
-# https://www.pycryptodome.org/en/latest/src/examples.html
-
-"""
-Обеспечить работу в обоих режимах: скриптовом (1 команда) и консольном (полноценное взаимодействие с пользователем)
-"""
-
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA3_256
 import os
