@@ -8,7 +8,7 @@ def pass_read(msg=""):
     os.system('echo off')
     os.system(f'powershell -Command $pword = read-host "{msg}" -AsSecureString ; $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword) ; [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .tmp.txt')
     f = open('.tmp.txt', 'r')
-    password = f.read()
+    password = f.readline().replace('\n', '')
     f.close()
     os.remove('./.tmp.txt')
     os.system('echo on')
