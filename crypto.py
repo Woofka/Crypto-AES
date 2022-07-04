@@ -1,18 +1,8 @@
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA3_256
+from getpass import getpass
 import os
 import sys
-
-
-def pass_read(msg=""):
-    os.system('echo off')
-    os.system(f'powershell -Command $pword = read-host "{msg}" -AsSecureString ; $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword) ; [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .tmp.txt')
-    f = open('.tmp.txt', 'r')
-    password = f.readline().replace('\n', '')
-    f.close()
-    os.remove('./.tmp.txt')
-    os.system('echo on')
-    return password
 
 
 def sha3_256_key(password):
@@ -123,7 +113,7 @@ if __name__ == '__main__':
         print(msg_err_path)
         exit(1)
 
-    password = pass_read("Enter password")
+    password = getpass("Enter password: ")
 
     if '-e' in sys.argv:
         result = encrypt_file(path, sha3_256_key(password), remove)
