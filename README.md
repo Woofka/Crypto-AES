@@ -2,7 +2,6 @@
 AES encryption and decryption script
 
 Requirements:
-- Windows (because of using Windows PowerShell)
 - Python 3
 - PyCryptodome
 
